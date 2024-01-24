@@ -1,1 +1,1 @@
-web: gunicorn superleague.wsgi
+ web: gunicorn superleague.superleague.wsgi
