@@ -4,3 +4,5 @@ pyyaml
 requests
 django-cors-headers
 djangorestframework-simplejwt==4.7.2
+dgunicorn==20.1.0
+django-heroku==0.3.1
