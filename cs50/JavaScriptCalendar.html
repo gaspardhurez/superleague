@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://cs50.ai/chat -->
+<html lang="en" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        
+        <meta name="viewport" content="initial-scale=1.0, width=device-width">
+
+        <meta property="og:description" content="CS50&#39;s adaptation of ChatGPT for students and teachers">
+        <meta property="og:image" content="https://cs50.ai/static/img/ddb50.png">
+        <meta property="og:title" content="CS50.ai">
+        <meta property="og:type" content="website">
+
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:creator" content="@cs50">
+        <meta property="twitter:description" content="CS50&#39;s adaptation of ChatGPT for students and teachers">
+        <meta property="twitter:image" content="https://cs50.ai/static/img/ddb50.png">
+        <meta property="twitter:site" content="@cs50">
+        <meta property="twitter:title" content="CS50.ai">
+
+        <!-- icon -->
+        <link href="https://cs50.ai/static/img/ddb50.svg" rel="icon" type="image/svg">
+        <link rel="apple-touch-icon" href="https://cs50.ai/static/image/touch-icon-iphone.png">
+
+        <script type="text/javascript" async="" src="./JavaScriptCalendar_files/mixpanel-2-latest.min.js"></script><script>
+            window.FontAwesomeConfig = { autoReplaceSvg: false };
+        </script>
+
+        <link href="./JavaScriptCalendar_files/main.css" rel="stylesheet">
+        <script src="./JavaScriptCalendar_files/main.js"></script>
+
+        <!-- Highlight.js CSS -->
+        <link id="highlightjs-css" rel="stylesheet" href="./JavaScriptCalendar_files/github-dark.min.css">
+
+        <!-- customization -->
+        <link rel="stylesheet" href="./JavaScriptCalendar_files/styles.css">
+
+        <title>CS50.ai</title>
+
+        
+
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    h1 img {
+        height: 1em;
+        width: initial;
+    }
+</style>
+
+
+
+        <!-- Mixpanel -->
+        <script type="text/javascript">
+            (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+            for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+        </script>
+        <script type="text/javascript">
+            mixpanel.init('34b6d31a564107bdb140d70b931e7a61', { debug: false, track_pageview: true, persistence: 'localStorage' });
+        </script>
+        <!-- end Mixpanel -->
+    <style type="text/css">body.swal2-shown:not(.swal2-no-backdrop) {
+  overflow-y: hidden; }
+
+body.swal2-toast-shown {
+  overflow-y: auto; }
+  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-icon {
+      margin: 0 0 15px; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-buttonswrapper {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      -ms-flex-item-align: stretch;
+          align-self: stretch;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-loading {
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-input {
+      height: 32px;
+      font-size: 14px;
+      margin: 5px auto; }
+  body.swal2-toast-shown > .swal2-container {
+    position: fixed;
+    background-color: transparent; }
+    body.swal2-toast-shown > .swal2-container.swal2-shown {
+      background-color: transparent; }
+    body.swal2-toast-shown > .swal2-container.swal2-top {
+      top: 0;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-top-right {
+      top: 0;
+      left: auto;
+      bottom: auto;
+      right: 0; }
+    body.swal2-toast-shown > .swal2-container.swal2-top-left {
+      top: 0;
+      left: 0;
+      bottom: auto;
+      right: auto; }
+    body.swal2-toast-shown > .swal2-container.swal2-center-left {
+      top: 50%;
+      left: 0;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-center {
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-center-right {
+      top: 50%;
+      left: auto;
+      bottom: auto;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom-left {
+      top: auto;
+      left: 0;
+      bottom: 0;
+      right: auto; }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom {
+      top: auto;
+      left: 50%;
+      bottom: 0;
+      right: auto;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom-right {
+      top: auto;
+      left: auto;
+      bottom: 0;
+      right: 0; }
+
+body.swal2-iosfix {
+  position: fixed;
+  left: 0;
+  right: 0; }
+
+body.swal2-no-backdrop > .swal2-shown {
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  background-color: transparent; }
+  body.swal2-no-backdrop > .swal2-shown > .swal2-modal {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top-left {
+    top: 0;
+    left: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top-right {
+    top: 0;
+    right: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center-left {
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center-right {
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom {
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom-left {
+    bottom: 0;
+    left: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom-right {
+    bottom: 0;
+    right: 0; }
+
+.swal2-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 1060; }
+  .swal2-container.swal2-top {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; }
+  .swal2-container.swal2-top-left {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-top-right {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-center {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .swal2-container.swal2-center-left {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-center-right {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-bottom {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
+  .swal2-container.swal2-bottom-left {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-bottom-right {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-grow-fullscreen > .swal2-modal {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-item-align: stretch;
+        align-self: stretch;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .swal2-container.swal2-grow-row > .swal2-modal {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .swal2-container.swal2-grow-column {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .swal2-container.swal2-grow-column.swal2-top, .swal2-container.swal2-grow-column.swal2-center, .swal2-container.swal2-grow-column.swal2-bottom {
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+    .swal2-container.swal2-grow-column.swal2-top-left, .swal2-container.swal2-grow-column.swal2-center-left, .swal2-container.swal2-grow-column.swal2-bottom-left {
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
+    .swal2-container.swal2-grow-column.swal2-top-right, .swal2-container.swal2-grow-column.swal2-center-right, .swal2-container.swal2-grow-column.swal2-bottom-right {
+      -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end; }
+    .swal2-container.swal2-grow-column > .swal2-modal {
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      -ms-flex-line-pack: center;
+          align-content: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+  .swal2-container:not(.swal2-top):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-left):not(.swal2-bottom-right) > .swal2-modal {
+    margin: auto; }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .swal2-container .swal2-modal {
+      margin: 0 !important; } }
+  .swal2-container.swal2-fade {
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s; }
+  .swal2-container.swal2-shown {
+    background-color: rgba(0, 0, 0, 0.4); }
+
+.swal2-popup {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+  position: relative;
+  max-width: 100%; }
+  .swal2-popup.swal2-toast {
+    width: 300px;
+    padding: 0 15px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow-y: hidden;
+    -webkit-box-shadow: 0 0 10px #d9d9d9;
+            box-shadow: 0 0 10px #d9d9d9; }
+    .swal2-popup.swal2-toast .swal2-title {
+      max-width: 300px;
+      font-size: 16px;
+      text-align: left; }
+    .swal2-popup.swal2-toast .swal2-content {
+      font-size: 14px;
+      text-align: left; }
+    .swal2-popup.swal2-toast .swal2-icon {
+      width: 32px;
+      height: 32px;
+      margin: 0 15px 0 0; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
+        width: 32px;
+        height: 32px; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-info, .swal2-popup.swal2-toast .swal2-icon.swal2-warning, .swal2-popup.swal2-toast .swal2-icon.swal2-question {
+        font-size: 26px;
+        line-height: 32px; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+        top: 14px;
+        width: 22px; }
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='left'] {
+          left: 5px; }
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
+          right: 5px; }
+    .swal2-popup.swal2-toast .swal2-buttonswrapper {
+      margin: 0 0 0 5px; }
+    .swal2-popup.swal2-toast .swal2-styled {
+      margin: 0 0 0 5px;
+      padding: 5px 10px; }
+      .swal2-popup.swal2-toast .swal2-styled:focus {
+        -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4);
+                box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4); }
+    .swal2-popup.swal2-toast .swal2-validationerror {
+      width: 100%;
+      margin: 5px -20px; }
+    .swal2-popup.swal2-toast .swal2-success {
+      border-color: #a5dc86; }
+      .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'] {
+        border-radius: 50%;
+        position: absolute;
+        width: 32px;
+        height: 64px;
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'][class$='left'] {
+          border-radius: 64px 0 0 64px;
+          top: -4px;
+          left: -15px;
+          -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
+          -webkit-transform-origin: 32px 32px;
+                  transform-origin: 32px 32px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+          border-radius: 0 64px 64px 0;
+          top: -5px;
+          left: 14px;
+          -webkit-transform-origin: 0 32px;
+                  transform-origin: 0 32px; }
+      .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
+        width: 32px;
+        height: 32px; }
+      .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
+        width: 7px;
+        height: 90px;
+        left: 28px;
+        top: 8px; }
+      .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'] {
+        height: 5px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'][class$='tip'] {
+          width: 12px;
+          left: 3px;
+          top: 18px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'][class$='long'] {
+          width: 22px;
+          right: 3px;
+          top: 15px; }
+    .swal2-popup.swal2-toast .swal2-animate-success-line-tip {
+      -webkit-animation: animate-toast-success-tip .75s;
+              animation: animate-toast-success-tip .75s; }
+    .swal2-popup.swal2-toast .swal2-animate-success-line-long {
+      -webkit-animation: animate-toast-success-long .75s;
+              animation: animate-toast-success-long .75s; }
+  .swal2-popup:focus {
+    outline: none; }
+  .swal2-popup.swal2-loading {
+    overflow-y: hidden; }
+  .swal2-popup .swal2-title {
+    color: #595959;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: none;
+    position: relative;
+    margin: 0 0 .4em;
+    padding: 0;
+    display: block;
+    word-wrap: break-word; }
+  .swal2-popup .swal2-buttonswrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px; }
+    .swal2-popup .swal2-buttonswrapper:not(.swal2-loading) .swal2-styled[disabled] {
+      opacity: .4;
+      cursor: no-drop; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-confirm {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 4px solid transparent;
+      border-color: transparent;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      margin: 7.5px;
+      vertical-align: top;
+      background-color: transparent !important;
+      color: transparent;
+      cursor: default;
+      border-radius: 100%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-cancel {
+      margin-left: 30px;
+      margin-right: 30px; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading :not(.swal2-styled).swal2-confirm::after {
+      display: inline-block;
+      content: '';
+      margin-left: 5px;
+      vertical-align: -1px;
+      height: 15px;
+      width: 15px;
+      border: 3px solid #999999;
+      -webkit-box-shadow: 1px 1px 1px #fff;
+              box-shadow: 1px 1px 1px #fff;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal; }
+  .swal2-popup .swal2-styled {
+    border: 0;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 15px 5px 0;
+    padding: 10px 32px; }
+    .swal2-popup .swal2-styled:focus {
+      outline: none;
+      -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
+              box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
+  .swal2-popup .swal2-image {
+    margin: 20px auto;
+    max-width: 100%; }
+  .swal2-popup .swal2-close {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 38px;
+    height: 40px;
+    font-size: 36px;
+    line-height: 40px;
+    font-family: serif;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    cursor: pointer;
+    color: #cccccc;
+    -webkit-transition: color .1s ease;
+    transition: color .1s ease; }
+    .swal2-popup .swal2-close:hover {
+      color: #d55; }
+  .swal2-popup > .swal2-input,
+  .swal2-popup > .swal2-file,
+  .swal2-popup > .swal2-textarea,
+  .swal2-popup > .swal2-select,
+  .swal2-popup > .swal2-radio,
+  .swal2-popup > .swal2-checkbox {
+    display: none; }
+  .swal2-popup .swal2-content {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+    float: none;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: #545454;
+    word-wrap: break-word; }
+  .swal2-popup .swal2-input,
+  .swal2-popup .swal2-file,
+  .swal2-popup .swal2-textarea,
+  .swal2-popup .swal2-select,
+  .swal2-popup .swal2-radio,
+  .swal2-popup .swal2-checkbox {
+    margin: 20px auto; }
+  .swal2-popup .swal2-input,
+  .swal2-popup .swal2-file,
+  .swal2-popup .swal2-textarea {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+    -webkit-transition: border-color .3s, -webkit-box-shadow .3s;
+    transition: border-color .3s, -webkit-box-shadow .3s;
+    transition: border-color .3s, box-shadow .3s;
+    transition: border-color .3s, box-shadow .3s, -webkit-box-shadow .3s; }
+    .swal2-popup .swal2-input.swal2-inputerror,
+    .swal2-popup .swal2-file.swal2-inputerror,
+    .swal2-popup .swal2-textarea.swal2-inputerror {
+      border-color: #f27474 !important;
+      -webkit-box-shadow: 0 0 2px #f27474 !important;
+              box-shadow: 0 0 2px #f27474 !important; }
+    .swal2-popup .swal2-input:focus,
+    .swal2-popup .swal2-file:focus,
+    .swal2-popup .swal2-textarea:focus {
+      outline: none;
+      border: 1px solid #b4dbed;
+      -webkit-box-shadow: 0 0 3px #c4e6f5;
+              box-shadow: 0 0 3px #c4e6f5; }
+    .swal2-popup .swal2-input::-webkit-input-placeholder,
+    .swal2-popup .swal2-file::-webkit-input-placeholder,
+    .swal2-popup .swal2-textarea::-webkit-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input:-ms-input-placeholder,
+    .swal2-popup .swal2-file:-ms-input-placeholder,
+    .swal2-popup .swal2-textarea:-ms-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input::-ms-input-placeholder,
+    .swal2-popup .swal2-file::-ms-input-placeholder,
+    .swal2-popup .swal2-textarea::-ms-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input::placeholder,
+    .swal2-popup .swal2-file::placeholder,
+    .swal2-popup .swal2-textarea::placeholder {
+      color: #cccccc; }
+  .swal2-popup .swal2-range input {
+    float: left;
+    width: 80%; }
+  .swal2-popup .swal2-range output {
+    float: right;
+    width: 20%;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center; }
+  .swal2-popup .swal2-range input,
+  .swal2-popup .swal2-range output {
+    height: 43px;
+    line-height: 43px;
+    vertical-align: middle;
+    margin: 20px auto;
+    padding: 0; }
+  .swal2-popup .swal2-input {
+    height: 43px;
+    padding: 0 12px; }
+    .swal2-popup .swal2-input[type='number'] {
+      max-width: 150px; }
+  .swal2-popup .swal2-file {
+    font-size: 20px; }
+  .swal2-popup .swal2-textarea {
+    height: 108px;
+    padding: 12px; }
+  .swal2-popup .swal2-select {
+    color: #545454;
+    font-size: inherit;
+    padding: 5px 10px;
+    min-width: 40%;
+    max-width: 100%; }
+  .swal2-popup .swal2-radio {
+    border: 0; }
+    .swal2-popup .swal2-radio label:not(:first-child) {
+      margin-left: 20px; }
+    .swal2-popup .swal2-radio input,
+    .swal2-popup .swal2-radio span {
+      vertical-align: middle; }
+    .swal2-popup .swal2-radio input {
+      margin: 0 3px 0 0; }
+  .swal2-popup .swal2-checkbox {
+    color: #545454; }
+    .swal2-popup .swal2-checkbox input,
+    .swal2-popup .swal2-checkbox span {
+      vertical-align: middle; }
+  .swal2-popup .swal2-validationerror {
+    background-color: #f0f0f0;
+    margin: 0 -20px;
+    overflow: hidden;
+    padding: 10px;
+    color: gray;
+    font-size: 16px;
+    font-weight: 300;
+    display: none; }
+    .swal2-popup .swal2-validationerror::before {
+      content: '!';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #ea7d7d;
+      color: #fff;
+      line-height: 24px;
+      text-align: center;
+      margin-right: 10px; }
+
+@supports (-ms-accelerator: true) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
+
+.swal2-icon {
+  width: 80px;
+  height: 80px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  margin: 20px auto 30px;
+  padding: 0;
+  position: relative;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .swal2-icon.swal2-error {
+    border-color: #f27474; }
+    .swal2-icon.swal2-error .swal2-x-mark {
+      position: relative;
+      display: block; }
+    .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+      position: absolute;
+      height: 5px;
+      width: 47px;
+      background-color: #f27474;
+      display: block;
+      top: 37px;
+      border-radius: 2px; }
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='left'] {
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+        left: 17px; }
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        right: 16px; }
+  .swal2-icon.swal2-warning {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #f8bb86;
+    border-color: #facea8;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-info {
+    font-family: 'Open Sans', sans-serif;
+    color: #3fc3ee;
+    border-color: #9de0f6;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-question {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #87adbd;
+    border-color: #c9dae1;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-success {
+    border-color: #a5dc86; }
+    .swal2-icon.swal2-success [class^='swal2-success-circular-line'] {
+      border-radius: 50%;
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='left'] {
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 60px 60px;
+                transform-origin: 60px 60px; }
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 0 60px;
+                transform-origin: 0 60px; }
+    .swal2-icon.swal2-success .swal2-success-ring {
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba(165, 220, 134, 0.2);
+      border-radius: 50%;
+      -webkit-box-sizing: content-box;
+              box-sizing: content-box;
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      z-index: 2; }
+    .swal2-icon.swal2-success .swal2-success-fix {
+      width: 7px;
+      height: 90px;
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      z-index: 1;
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+    .swal2-icon.swal2-success [class^='swal2-success-line'] {
+      height: 5px;
+      background-color: #a5dc86;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 2; }
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
+        width: 25px;
+        left: 14px;
+        top: 46px;
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg); }
+
+.swal2-progresssteps {
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 0; }
+  .swal2-progresssteps li {
+    display: inline-block;
+    position: relative; }
+  .swal2-progresssteps .swal2-progresscircle {
+    background: #3085d6;
+    border-radius: 2em;
+    color: #fff;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+    z-index: 20; }
+    .swal2-progresssteps .swal2-progresscircle:first-child {
+      margin-left: 0; }
+    .swal2-progresssteps .swal2-progresscircle:last-child {
+      margin-right: 0; }
+    .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep {
+      background: #3085d6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progresscircle {
+        background: #add8e6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progressline {
+        background: #add8e6; }
+  .swal2-progresssteps .swal2-progressline {
+    background: #3085d6;
+    height: .4em;
+    margin: 0 -1px;
+    z-index: 10; }
+
+[class^='swal2'] {
+  -webkit-tap-highlight-color: transparent; }
+
+@-webkit-keyframes showSweetToast {
+  0% {
+    -webkit-transform: translateY(-10px) rotateZ(2deg);
+            transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0; }
+  33% {
+    -webkit-transform: translateY(0) rotateZ(-2deg);
+            transform: translateY(0) rotateZ(-2deg);
+    opacity: .5; }
+  66% {
+    -webkit-transform: translateY(5px) rotateZ(2deg);
+            transform: translateY(5px) rotateZ(2deg);
+    opacity: .7; }
+  100% {
+    -webkit-transform: translateY(0) rotateZ(0);
+            transform: translateY(0) rotateZ(0);
+    opacity: 1; } }
+
+@keyframes showSweetToast {
+  0% {
+    -webkit-transform: translateY(-10px) rotateZ(2deg);
+            transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0; }
+  33% {
+    -webkit-transform: translateY(0) rotateZ(-2deg);
+            transform: translateY(0) rotateZ(-2deg);
+    opacity: .5; }
+  66% {
+    -webkit-transform: translateY(5px) rotateZ(2deg);
+            transform: translateY(5px) rotateZ(2deg);
+    opacity: .7; }
+  100% {
+    -webkit-transform: translateY(0) rotateZ(0);
+            transform: translateY(0) rotateZ(0);
+    opacity: 1; } }
+
+@-webkit-keyframes hideSweetToast {
+  0% {
+    opacity: 1; }
+  33% {
+    opacity: .5; }
+  100% {
+    -webkit-transform: rotateZ(1deg);
+            transform: rotateZ(1deg);
+    opacity: 0; } }
+
+@keyframes hideSweetToast {
+  0% {
+    opacity: 1; }
+  33% {
+    opacity: .5; }
+  100% {
+    -webkit-transform: rotateZ(1deg);
+            transform: rotateZ(1deg);
+    opacity: 0; } }
+
+@-webkit-keyframes showSweetAlert {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  45% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
+  80% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes showSweetAlert {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  45% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
+  80% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes hideSweetAlert {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0; } }
+
+@keyframes hideSweetAlert {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0; } }
+
+.swal2-show {
+  -webkit-animation: showSweetAlert .3s;
+          animation: showSweetAlert .3s; }
+  .swal2-show.swal2-toast {
+    -webkit-animation: showSweetToast .5s;
+            animation: showSweetToast .5s; }
+  .swal2-show.swal2-noanimation {
+    -webkit-animation: none;
+            animation: none; }
+
+.swal2-hide {
+  -webkit-animation: hideSweetAlert .15s forwards;
+          animation: hideSweetAlert .15s forwards; }
+  .swal2-hide.swal2-toast {
+    -webkit-animation: hideSweetToast .2s forwards;
+            animation: hideSweetToast .2s forwards; }
+  .swal2-hide.swal2-noanimation {
+    -webkit-animation: none;
+            animation: none; }
+
+@-webkit-keyframes animate-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px; }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px; }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px; } }
+
+@keyframes animate-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px; }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px; }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px; } }
+
+@-webkit-keyframes animate-success-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  84% {
+    width: 55px;
+    right: 0;
+    top: 35px; }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px; } }
+
+@keyframes animate-success-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  84% {
+    width: 55px;
+    right: 0;
+    top: 35px; }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px; } }
+
+@-webkit-keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  70% {
+    width: 24px;
+    left: -4px;
+    top: 17px; }
+  84% {
+    width: 8px;
+    left: 10px;
+    top: 20px; }
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px; } }
+
+@keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  70% {
+    width: 24px;
+    left: -4px;
+    top: 17px; }
+  84% {
+    width: 8px;
+    left: 10px;
+    top: 20px; }
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px; } }
+
+@-webkit-keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  65% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  84% {
+    width: 26px;
+    right: 0;
+    top: 15px; }
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px; } }
+
+@keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  65% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  84% {
+    width: 26px;
+    right: 0;
+    top: 15px; }
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px; } }
+
+@-webkit-keyframes rotatePlaceholder {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); } }
+
+@keyframes rotatePlaceholder {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); } }
+
+.swal2-animate-success-line-tip {
+  -webkit-animation: animate-success-tip .75s;
+          animation: animate-success-tip .75s; }
+
+.swal2-animate-success-line-long {
+  -webkit-animation: animate-success-long .75s;
+          animation: animate-success-long .75s; }
+
+.swal2-success.swal2-animate-success-icon .swal2-success-circular-line-right {
+  -webkit-animation: rotatePlaceholder 4.25s ease-in;
+          animation: rotatePlaceholder 4.25s ease-in; }
+
+@-webkit-keyframes animate-error-icon {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    opacity: 0; }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    opacity: 1; } }
+
+@keyframes animate-error-icon {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    opacity: 0; }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    opacity: 1; } }
+
+.swal2-animate-error-icon {
+  -webkit-animation: animate-error-icon .5s;
+          animation: animate-error-icon .5s; }
+
+@-webkit-keyframes animate-x-mark {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  80% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    margin-top: -6px; }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    margin-top: 0;
+    opacity: 1; } }
+
+@keyframes animate-x-mark {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  80% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    margin-top: -6px; }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    margin-top: 0;
+    opacity: 1; } }
+
+.swal2-animate-x-mark {
+  -webkit-animation: animate-x-mark .5s;
+          animation: animate-x-mark .5s; }
+
+@-webkit-keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+</style></head>
+
+    <body cz-shortcut-listen="true">
+        
+
+<div class="container py-1" id="ddbChatContainer">
+    <nav class="navbar">
+        <h1 class="display-6">
+            <a class="text-body text-decoration-none" href="https://cs50.ai/">
+                CS50.ai
+                <img id="ddbIconAwake" src="./JavaScriptCalendar_files/ddb50.gif" class="align-bottom mb-1 ps-1" alt="CS50 duck debugger" type="image/gif">
+                <img id="ddbIconSleeping" src="./JavaScriptCalendar_files/ddb50_sleeping.png" class="align-bottom mb-1 ps-1" alt="CS50 duck debugger sleeping" type="image/png" style="display: none">
+            </a>
+        </h1>
+
+        <div id="ddbEnergy" class="flex-grow-1 ps-3">
+          <i class="ddbEnergyIconBorder fa-regular fa-heart"></i>
+          <i class="ddbEnergyIcon fa-solid fa-heart full"></i>
+          <i class="ddbEnergyIconBorder fa-regular fa-heart"></i>
+          <i class="ddbEnergyIcon fa-solid fa-heart full"></i>
+          <i class="ddbEnergyIconBorder fa-regular fa-heart"></i>
+          <i class="ddbEnergyIcon fa-solid fa-heart full"></i>
+          <i class="ddbEnergyIconBorder fa-regular fa-heart"></i>
+          <i class="ddbEnergyIcon fa-solid fa-heart full"></i>
+          <i class="ddbEnergyIconBorder fa-regular fa-heart"></i>
+          <i class="ddbEnergyIcon fa-solid fa-heart full"></i>
+        </div>
+
+        <form action="https://cs50.ai/logout">
+            
+            <span id="stopGenBtn" class="btn btn-outline-danger my-2 my-sm-0" title="Stop Generating" style="display: none;">
+                <i id="stopGenBtnIcon" class="fa-solid fa-stop"></i>
+            </span>
+            <button class="btn btn-outline-secondary my-2 my-sm-0" title="Sign Out (gaspardhurez)" type="submit">
+                <i class="fa fa-sign-out"></i>
+            </button>
+            <span class="btn btn-outline-secondary my-2 my-sm-0" title="Feedback" type="button">
+            <a href="https://cs50.ly/cs50ai-feedback" target="_blank" style="text-decoration: none; color: inherit;">
+                Feedback
+            </a>
+        
+    </span></form></nav>
+    <div id="ddbChatText"><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-disclaimer" class="ddbChatMessage"><p>Quack. I am CS50's duck debugger (ddb), an experimental AI for <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubberducking</a>. Quack quack. My replies might not always be accurate, so always think critically and let me know if you think that I've erred. Conversations are logged for debugging's sake. Quack quack quack.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-4e7e9c77-fb7a-4156-a8c5-fbdb2650624f" class="ddbChatMessage"><p>I want to make a slider/carousel in CSS that would let me display the games for each week in my private football league</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-ff971f04-2b15-460a-8990-5cc276c36485" class="ddbChatMessage"><p>Creating a slider or carousel in CSS can be a fun project! However, it's important to note that CS50 focuses on the C programming language and foundational computer science concepts. While we do touch on web development, we don't delve deeply into CSS animations or transitions.</p>
+<p>That being said, I can give you a general idea of how you might approach this. You'll likely want to use a combination of HTML, CSS, and JavaScript. HTML to structure your content, CSS for styling and animations, and JavaScript to add interactivity.</p>
+<p>In CSS, you can use properties like <code>transform</code> and <code>transition</code> to create sliding effects. JavaScript can be used to add event listeners to your navigation buttons, changing the CSS properties when they're clicked.</p>
+<p>Remember, the key to learning is to break down the problem into smaller parts and tackle them one at a time. Start by creating the HTML structure, then move on to the CSS, and finally add the JavaScript. Good luck!</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-40e6b66c-5c62-426f-8671-0149695a8182" class="ddbChatMessage"><p>I use Django<br>
+What do you recommend? I was thinking of initially displaying week 1, and adding event listeners to arrows to dynamically load data (if click on right arrow, increment week displayed by one)</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-6fe1e60a-dc89-402c-9400-8d54754dc74c" class="ddbChatMessage"><p>Your idea sounds like a good approach! Django is a powerful framework that can certainly handle this. You can use Django to serve the data for each week, and then use JavaScript to fetch the new data when the arrows are clicked.</p>
+<p>Here's a rough idea of how you might structure this:</p>
+<ol>
+<li>Create a Django view that takes a week number as a parameter and returns the data for that week.</li>
+<li>In your JavaScript, add event listeners to your arrows. When an arrow is clicked, increment or decrement your week number and make a request to your Django view with the new week number.</li>
+<li>When the request is complete, update your page with the new data.</li>
+</ol>
+<p>Remember to handle edge cases, like what happens when you're on week 1 and the left arrow is clicked, or when you're on the last week and the right arrow is clicked.</p>
+<p>This is a high-level overview and the actual implementation will depend on your specific needs and setup. Good luck!</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-7fd78eba-dcc4-47e6-881e-3f4b251e3246" class="ddbChatMessage"><p>so it would mean another view than the one where I display the data?</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-fbe02158-c938-4417-9c68-7aff86a0e6ca" class="ddbChatMessage"><p>Yes, you would typically create a separate view for this. The main view would be responsible for initially rendering the page, and the second view would be used to fetch data for a specific week when an arrow is clicked. This second view would likely return JSON data that your JavaScript code can then use to update the page.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-bfbc8bf6-eff2-4259-8e33-bfd5c24e078a" class="ddbChatMessage"><p>is this what we call AJAX request</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-6d33063c-3e94-4f0c-bbfa-539a6c1f2cb1" class="ddbChatMessage"><p>Yes, you're correct! AJAX stands for Asynchronous JavaScript and XML. It's a technique that allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that it's possible to update parts of a web page, without reloading the whole page. In your case, you would be using AJAX to fetch the data for a specific week without having to reload the entire page.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-364ebf58-3b7f-4753-9edf-de3855d6279c" class="ddbChatMessage"><p>and what is the place of Django template language into this? I'm having a hard time understanding what would be django template language, and what would be JS in my case<br>
+Could you show some pseudocode for guidance purpose?</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-bb5a9f76-f781-463a-85ab-a296b86721de" class="ddbChatMessage"><p>Sure, I can provide some guidance on this.</p>
+<p>Django Template Language (DTL) is used to generate HTML dynamically on the server side. It's used in your Django views to render your initial page. For example, you might use DTL to generate the HTML for the first week's games when the page is first loaded.</p>
+<p>JavaScript, on the other hand, is used on the client side (in the user's browser) to make the page interactive. In your case, you would use JavaScript to fetch data for other weeks when the user clicks an arrow, and then update the page with that data.</p>
+<p>Here's a rough pseudocode outline of how this might look:</p>
+<p>Django view:</p>
+<pre class="hljs"><code>def week_games(request, week_number):
+    games = get_games_for_week(week_number)  # Fetch the games for the given week
+    return JsonResponse(games)  # Return the games as JSON
+</code></pre>
+<p>JavaScript:</p>
+<pre class="hljs"><code>// Add event listener to right arrow
+document.getElementById('right-arrow').addEventListener('click', function() {
+    weekNumber++;  // Increment the week number
+    fetch('/week-games/' + weekNumber)  // Make a request to the Django view
+        .then(response =&gt; response.json())  // Parse the response as JSON
+        .then(games =&gt; {
+            // Update the page with the new games
+        });
+});
+</code></pre>
+<p>This is a very high-level overview and the actual implementation will depend on your specific needs and setup. I hope this helps clarify the roles of DTL and JavaScript in your project!</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-4a2dcfa5-8a95-4fe9-ab86-fc7f82538495" class="ddbChatMessage"><p>and in the HTML?</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-ae9cf722-4b62-4cbf-8944-4ad1d97f7e29" class="ddbChatMessage"><p>In your HTML, you would initially render the games for the first week using Django Template Language. You would also have placeholders where the games for other weeks will be inserted by your JavaScript code. Here's a rough idea:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"games"</span>&gt;</span>
+    {% for game in week1_games %}
+        <span class="hljs-comment">&lt;!-- Render each game using Django Template Language --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"game"</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- Game details here --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    {% endfor %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"right-arrow"</span>&gt;</span>Next Week<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>When the right arrow is clicked and your JavaScript fetches the games for the next week, it would then update the <code>#games</code> div with the new games. This would be done entirely in JavaScript, without using Django Template Language, because it's happening on the client side after the page has already been loaded.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-b32ea99e-b7d2-4a4a-aeb8-360219d8cb03" class="ddbChatMessage"><p>so DTL is only for initial rendering</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-edcdfdeb-22b1-4568-9c3e-59f011527099" class="ddbChatMessage"><p>Yes, that's correct! Django Template Language is used on the server side to generate the initial HTML that's sent to the client. After the page has been loaded, any updates to the page that happen in response to user interaction are typically handled by JavaScript on the client side.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-c377b2d0-bc22-4d5c-9dc1-0132ed8d114f" class="ddbChatMessage"><p>but can't I avoid it and handle all initial rendering with JS? I find it annoying having to handle one more language</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-b2771165-8ca3-4ac0-8845-d0635319281a" class="ddbChatMessage"><p>Yes, you can certainly handle all the rendering with JavaScript if you prefer. This is a common approach in single-page applications, where the server sends a minimal HTML page with a JavaScript file, and then JavaScript is used to fetch data and update the page dynamically. This would mean that your Django views would mostly be returning JSON data, and your JavaScript code would be responsible for generating the HTML. This approach has its own trade-offs and might be more complex depending on your familiarity with JavaScript.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-9c3f45a8-b5ff-4945-8720-079504d5b9de" class="ddbChatMessage"><p>how would my initial HTML and JS look like if I go for this route</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-6e8d921c-3ca4-4178-ace1-7ee175aec970" class="ddbChatMessage"><p>Your initial HTML would be quite minimal, something like this:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"games"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"right-arrow"</span>&gt;</span>Next Week<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"script.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>In your JavaScript file (<code>script.js</code>), you would fetch the data for the first week when the page loads, and then update the page. Here's a rough idea:</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> weekNumber = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">// Function to fetch games and update page</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">updateGames</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">'/week-games/'</span> + weekNumber)
+        .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">json</span>())
+        .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">games</span> =&gt;</span> {
+            <span class="hljs-comment">// Clear the games div</span>
+            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'games'</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">''</span>;
+            <span class="hljs-comment">// Add each game to the games div</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> game <span class="hljs-keyword">of</span> games) {
+                <span class="hljs-comment">// Create a new div for the game</span>
+                <span class="hljs-keyword">let</span> gameDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'div'</span>);
+                gameDiv.<span class="hljs-property">className</span> = <span class="hljs-string">'game'</span>;
+                <span class="hljs-comment">// Add game details to the div</span>
+                <span class="hljs-comment">// ...</span>
+                <span class="hljs-comment">// Add the game div to the games div</span>
+                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'games'</span>).<span class="hljs-title function_">appendChild</span>(gameDiv);
+            }
+        });
+}
+
+<span class="hljs-comment">// Fetch games for the first week when the page loads</span>
+<span class="hljs-title function_">updateGames</span>();
+
+<span class="hljs-comment">// Add event listener to right arrow</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'right-arrow'</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    weekNumber++;
+    <span class="hljs-title function_">updateGames</span>();
+});
+</code></pre>
+<p>This is a very high-level overview and the actual implementation will depend on your specific needs and setup.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-74ea433c-3df1-4fc8-81f5-5bcb9b869971" class="ddbChatMessage"><p>and how about the styling for those games</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-c3e03420-dedf-446e-a9cf-d5e34ef4b43e" class="ddbChatMessage"><p>You can style the games in your CSS file as you normally would. The fact that the game elements are being created dynamically with JavaScript doesn't change how you style them. For example, if you're giving each game a class of 'game', you could have something like this in your CSS:</p>
+<pre class="hljs"><code><span class="hljs-selector-class">.game</span> {
+    <span class="hljs-comment">/* Your styles here */</span>
+}
+</code></pre>
+<p>You can also add inline styles directly in your JavaScript when you're creating the elements, but it's generally better to keep your styles in a separate CSS file.</p>
+</span>
+            </div><div class="ddbChat ddbChat-User">
+                <span class="ddbChatBorder ddbChatBorder-User"></span>
+                <span class="ddbAuthorName"><b>you</b></span>
+                <span id="id-f4880577-d2d3-4407-ba87-d2a89fa64304" class="ddbChatMessage"><p>function updateGames() {<br>
+fetch('/week-games/' + weekNumber)<br>
+.then(response =&gt; response.json())<br>
+.then(games =&gt; {<br>
+// Clear the games div<br>
+document.getElementById('games').innerHTML = '';<br>
+// Add each game to the games div<br>
+for (let game of games) {<br>
+// Create a new div for the game<br>
+let gameDiv = document.createElement('div');<br>
+gameDiv.className = 'game';<br>
+// Add game details to the div<br>
+// ...<br>
+// Add the game div to the games div<br>
+document.getElementById('games').appendChild(gameDiv);<br>
+}<br>
+});<br>
+}</p>
+<p>can you break down this syntax</p>
+</span>
+            </div><div class="ddbChat ddbChat-Duck">
+                <span class="ddbChatBorder ddbChatBorder-Duck"></span>
+                <span class="ddbAuthorName"><b>ddb</b></span>
+                <span id="id-0ddf02b1-13e7-4416-94d2-d131b2f473e3" class="ddbChatMessage"><p>Absolutely, let's break it down:</p>
+<ol>
+<li>
+<p><code>fetch('/week-games/' + weekNumber)</code>: This line is making a request to the server to get the games for a specific week. The <code>fetch</code> function returns a Promise that resolves to the Response from the server.</p>
+</li>
+<li>
+<p><code>.then(response =&gt; response.json())</code>: This line is taking the Response from the server and converting it to JSON. The <code>json</code> method also returns a Promise, which resolves to the actual JSON data.</p>
+</li>
+<li>
+<p><code>.then(games =&gt; {...})</code>: This line is taking the JSON data (which we're calling <code>games</code>) and using it to update the page. The code inside the <code>{...}</code> is what's actually doing the updating.</p>
+</li>
+<li>
+<p><code>document.getElementById('games').innerHTML = '';</code>: This line is clearing the <code>games</code> div so that we can add the new games.</p>
+</li>
+<li>
+<p><code>for (let game of games) {...}</code>: This line is looping over each game in the <code>games</code> array. The code inside the <code>{...}</code> is what's happening for each game.</p>
+</li>
+<li>
+<p><code>let gameDiv = document.createElement('div');</code>: This line is creating a new <code>div</code> element for each game.</p>
+</li>
+<li>
+<p><code>gameDiv.className = 'game';</code>: This line is giving the new <code>div</code> a class of 'game'.</p>
+</li>
+<li>
+<p><code>document.getElementById('games').appendChild(gameDiv);</code>: This line is adding the new <code>div</code> to the <code>games</code> div on the page.</p>
+</li>
+</ol>
+<p>I hope this helps! Let me know if you have any other questions.</p>
+</span>
+            </div></div>
+    <br>
+    <div id="ddbInput">
+        <div id="resizeHandle"></div>
+        <div class="input-group mb-3">
+            <textarea id="ddbInputTextarea" class="form-control" placeholder="Ask a question"></textarea>
+            <div class="input-group-append">
+                <button id="sendBtn" class="btn btn-link text-secondary" type="button" title="Send">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+
+    <script>
+
+        // // https://getbootstrap.com/docs/5.3/customize/color-modes/#javascript
+        $(function() {
+
+            function getPreferredTheme() {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function setTheme(theme) {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark')
+                    document.querySelector('#highlightjs-css').setAttribute('href', "/static/css/highlightjs/github-dark.min.css");
+                }
+                else {
+                    document.documentElement.setAttribute('data-bs-theme', theme)
+                    document.querySelector('#highlightjs-css').setAttribute('href', "/static/css/highlightjs/github.min.css");
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                setTheme(getPreferredTheme());
+            });
+            setTheme(getPreferredTheme());
+        });
+
+    </script>
+
+    <!-- Statuspage -->
+    <script src="./JavaScriptCalendar_files/script.js"></script><iframe src="./JavaScriptCalendar_files/frame.html" title="CS50 Status" aria-hidden="true" style="position: fixed; border: none; box-shadow: rgba(9, 20, 66, 0.25) 0px 20px 32px -8px; z-index: 9999; transition: left 1s ease 0s, bottom 1s ease 0s, right 1s ease 0s; height: 115px; width: 320px; left: -9999px; right: -9999px; bottom: calc(100% - 175px);" tabindex="-1"></iframe>
+
+    
+
+<script src="./JavaScriptCalendar_files/chat.js"></script>
+
+<script>
+    mixpanel.identify("369ad4f8-df1b-4e7a-bfe0-0e4d0c310557");
+</script>
+
+
+</body></html>
