@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap');
+
+html, body, .container {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Poppins', monospace;
+
+}
+
+h2 {
+    margin: 0;
+}
+.container {
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+}
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    gap: 16px;
+    padding: 0 64px;
+    background-color: rgba(255, 85, 86, 1);
+    
+
+}
+
+.navbar div {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    grid-column: 2 / 3;
+    justify-self: center;
+    gap: 16px;
+    height: 100%;
+
+}
+
+.pageTitle {
+    color: white;
+    font-weight: 500;
+}
+
+.navButtons {
+    margin-right: 5%;
+}
+
+
+.navButton {
+    background-color: transparent;
+    border: 0;
+    font-size: 1em;
+    height: 100%;
+    font-weight: 700;
+    padding: 24px 8px;
+    border-bottom: 5px solid transparent;
+    color: white
+}
+
+
+
+.content {
+    background-color: #F6F7F9;
+    padding: 4% 8%;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1.3fr;
+    gap: 32px;
+    grid-auto-flow: column;
+    flex-wrap: wrap;
+}
+
+.calendar, .playerRank, .teamRank, .logo {
+    border-radius: 12px;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 47%;
+
+}
+
+
+.calendar {
+    grid-column: 1 / 2;
+    grid-row: 2 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+
+.calendarArrow {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    border: 0px;
+
+}
+
+.calendarBlock {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.weekNav > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar h2 {
+    font-weight: 400;
+    font-size: 1.2em;
+    display: block;
+}
+
+.weekNav .material-symbols-outlined {
+    font-size: 40px;
+}
+
+.weekNav {
+    margin-bottom: 16px;
+    width: 50%;
+    border-radius: 5px;
+    padding: 16px;
+}
+
+.weekNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.game {
+    width: 80%;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color:#FDEDEE;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px;
+    align-items: center;
+}
+
+.game > div {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.game > div:nth-child(2) {
+    justify-content: center;
+    flex: 1;
+}
+
+.game:hover {
+    background-color: #e9ecef;
+}
+
+
+
+
+
+.logo {
+    grid-row: 1 / 2;
+    background-color: rgba(255, 85, 86, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo img {
+    height: 250px;
+    width:250px;
+}
+
+
+
+.teamRank {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;  
+}
+
+.title {
+    height: 40px;
+    background-color: rgba(255, 85, 86, 1);
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    padding-left: 20px;
+
+}
+
+.table {
+    height: 90%;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: white;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    min-width: 400px;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 85, 86, 0.05);
+}
+
+td, th {
+    padding: 4px;
+    text-align: center;
+}
+
+td:nth-child(2), th:nth-child(2) {
+    text-align: left;
+    padding-left: 8px;
+}
+
+td:first-child {
+    font-weight: 700;
+    width: 7.5%;
+    
+}
+tbody tr, th, td {
+    border: 0.5px solid #ddd;
+    
+}
+
+
+.playerRank {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+}
+
+@media (max-width: 1100px) {
+    .calendar, .playerRank, .teamRank, .logo {
+   
+        width: 100%;
+    
+    }
+
+    .content {
+        padding: 8% 16%;
+        gap: 48px;
+    }
+  }
