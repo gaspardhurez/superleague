@@ -87,7 +87,6 @@ h2 {
 
 }
 
-
 .calendar {
     justify-content: space-between;
 }
@@ -168,9 +167,6 @@ h2 {
 }
 
 
-
-
-
 .logo {
     grid-row: 1 / 2;
     background-color: rgba(255, 85, 86, 1);
@@ -218,7 +214,6 @@ h1 {
 
 table {
     border-collapse: collapse;
-    min-width: 400px;
     width: 100%;
     height: 100%;
     text-align: left;
@@ -234,7 +229,7 @@ td, th {
     text-align: center;
 }
 
-td:nth-child(2), th:nth-child(2) {
+td:nth-child(2), th:nth-child(2), .playerRank td:nth-child(3) {
     text-align: left;
     padding-left: 8px;
 }
@@ -295,10 +290,7 @@ tbody tr, th, td {
     .weekNav .material-symbols-outlined {
         color: black;
     }
-    .table {
-        padding: 4px;
-    }
-
+ 
     td:nth-child(1) {
         width: 3%;
     }
@@ -307,13 +299,16 @@ tbody tr, th, td {
         width: 25%;
     }
 
-    .playerRank td:nth-child(2), .playerRank td:nth-child(5)  {
+    .playerRank td:nth-child(2) {
         width: 20%;
     }
 
-    .playerRank td:nth-child(4) {
+    .playerRank td:nth-child(4), .playerRank th:nth-child(4)  {
         width: 5%;
     }
 
+    .playerRank td:nth-child(5), .playerRank th:nth-child(5) {
+        width: 10%;
+    }
 
-  }
+}
