@@ -274,4 +274,17 @@ tbody tr, th, td {
         padding: 8%;
         gap: 48px;
     }
+
+    .pageTitle {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .navButtons {
+        margin-right: 0;
+    }
   }

@@ -20,6 +20,6 @@ from dashboard import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+    path('', views.DashboardView.as_view(), name='dashboard'),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
 ]
