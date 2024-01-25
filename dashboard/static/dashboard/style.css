@@ -73,10 +73,7 @@ h2 {
     background-color: #F6F7F9;
     padding: 4% 8%;
     display: flex;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1.3fr;
     gap: 32px;
-    grid-auto-flow: column;
     flex-wrap: wrap;
 }
 
@@ -92,12 +89,7 @@ h2 {
 
 
 .calendar {
-    grid-column: 1 / 2;
-    grid-row: 2 / -1;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    height: auto;
 }
 
 .calendarArrow {
@@ -131,10 +123,10 @@ h2 {
 }
 
 .weekNav {
-    margin-bottom: 16px;
     width: 50%;
     border-radius: 5px;
     padding: 16px;
+    margin: 16px 0;
 }
 
 .weekNav {
@@ -265,14 +257,13 @@ tbody tr, th, td {
 
 @media (max-width: 1100px) {
     .calendar, .playerRank, .teamRank, .logo {
-   
-        width: 100%;
+        width: 90vw;
     
     }
 
     .content {
-        padding: 8%;
         gap: 48px;
+        padding: 8%;
     }
 
     .pageTitle {
@@ -287,4 +278,42 @@ tbody tr, th, td {
     .navButtons {
         margin-right: 0;
     }
+
+    .game, table {
+        font-size: 0.7em;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .weekNav h2 {
+        font-size: 1em;
+    }
+
+
+    .weekNav .material-symbols-outlined {
+        color: black;
+    }
+    .table {
+        padding: 4px;
+    }
+
+    td:nth-child(1) {
+        width: 3%;
+    }
+
+    .playerRank td:nth-child(3), .teamRank td:nth-child(2) {
+        width: 25%;
+    }
+
+    .playerRank td:nth-child(2), .playerRank td:nth-child(5)  {
+        width: 20%;
+    }
+
+    .playerRank td:nth-child(4) {
+        width: 5%;
+    }
+
+
   }
