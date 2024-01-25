@@ -35,11 +35,10 @@ h2 {
 
 }
 
-.navbar div {
+.navButtons {
     display: flex;
     justify-items: center;
     align-items: center;
-    grid-column: 2 / 3;
     justify-self: center;
     gap: 16px;
     height: 100%;
@@ -48,8 +47,17 @@ h2 {
 
 .pageTitle {
     color: white;
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
+
+.instagram {
+    background-color: transparent;
+    border: 0px;
+}
+
 
 .navButtons {
     margin-right: 5%;
@@ -182,6 +190,13 @@ h2 {
 }
 
 
+.instagram img {
+    height: 40px;
+    padding-top: 4px;
+    margin-top: 4px;
+}
+
+
 
 .teamRank {
     grid-column: 2 / -1;
@@ -221,7 +236,7 @@ table {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(255, 85, 86, 0.05);
+    background-color: rgba(255, 85, 86, 0.1);
 }
 
 td, th {
@@ -232,6 +247,14 @@ td, th {
 td:nth-child(2), th:nth-child(2), .playerRank td:nth-child(3) {
     text-align: left;
     padding-left: 8px;
+}
+
+.playerRank td:nth-child(3) {
+    text-align: center;
+}
+
+th {
+    padding: 8px 4px;
 }
 
 td:first-child {
@@ -245,10 +268,7 @@ tbody tr, th, td {
 }
 
 
-.playerRank {
-    grid-column: 2 / -1;
-    grid-row: 2 / -1;
-}
+
 
 @media (max-width: 1100px) {
     .calendar, .playerRank, .teamRank, .logo {
@@ -261,17 +281,27 @@ tbody tr, th, td {
         padding: 8%;
     }
 
-    .pageTitle {
-        display: none;
+
+    .instagram img {
+        height: 4.5vh;
+
     }
 
     .navbar {
-        justify-content: center;
+
+        align-items: center;
         padding: 0;
+        padding-top: 24px;
+        flex-direction: column;
+        gap: 0px;
     }
 
     .navButtons {
         margin-right: 0;
+    }
+
+    .navButton {
+        padding: 16px 8px;
     }
 
     .game, table {
@@ -295,8 +325,13 @@ tbody tr, th, td {
         width: 3%;
     }
 
-    .playerRank td:nth-child(3), .teamRank td:nth-child(2) {
+    .teamRank td:nth-child(2) {
+        width: 50%;
+    }
+
+    .playerRank td:nth-child(3){
         width: 25%;
+        text-align: center;
     }
 
     .playerRank td:nth-child(2) {
@@ -307,8 +342,8 @@ tbody tr, th, td {
         width: 5%;
     }
 
-    .playerRank td:nth-child(5), .playerRank th:nth-child(5) {
-        width: 10%;
+    .playerRank td:nth-child(5) {
+        width: 20%;
     }
 
 }

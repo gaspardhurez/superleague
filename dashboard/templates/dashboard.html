@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="{% static 'dashboard/script.js' %}" defer></script>
-
     <title>Superleague</title>
 </head>
 <body>
 
   <div class="container">
     <div class="navbar">
-      <h2 class="pageTitle">Superleague ⚽️ </h2>
+      <div class="pageTitle">
+        <h2>Superleague</h2>
+        <a class="instagram" target="_blank" href="https://www.instagram.com/la.superleague/">
+          <img src="{% static 'dashboard/instagram.svg' %}" alt="">
+        </a>
+      
+      </div>
+      
       <div class="navButtons">
         <button class="navButton" style="color: white; font-weight: bold; border-bottom: 5px solid white;
         border-radius: 5px;">Saison</button>
@@ -76,8 +82,6 @@
                 <th>W</th>
                 <th>D</th>
                 <th>L</th>
-                <th>GF</th>
-                <th>GA</th>
                 <th>GD</th>
                 <th>REF</th>
                 <th>PTS</th>
@@ -93,8 +97,6 @@
                   <td>{{ team.wins }}</td>
                   <td>{{ team.draws }}</td>
                   <td>{{ team.losses }}</td>
-                  <td>{{ team.goals_scored }}</td>
-                  <td>{{ team.goals_conceded }}</td>
                   <td>{{ team.goal_difference }}</td>
                   <td>{{ team.refereed_games }}</td>
                   <td>{{ team.points }}</td>
