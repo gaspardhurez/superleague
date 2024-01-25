@@ -3,8 +3,27 @@ let currentWeek = document.querySelector(".weekNav > div > h2:nth-child(2)")
 let teamOneElements = document.querySelectorAll('.teamOne');
 let teamTwoElements = document.querySelectorAll('.teamTwo');
 
+if (currentWeek.textContent === "1") {
+    arrows[0].setAttribute('disabled', '')
+    arrows[0].style.cssText = 'background-color: #F4F5F6;'
+    arrows[0].querySelector('span').style.cssText = 'color: #B7B8B9;'
+
+    
+}
+if (currentWeek.textContent == 7) {
+    arrows[1].setAttribute('disabled', '')
+    arrows[1].style.cssText = 'background-color: #F4F5F6;'
+    arrows[1].querySelector('span').style.cssText = 'color: #B7B8B9;'
+}
+
 
 arrows[0].addEventListener('click', () => {
+
+    if (currentWeek.textContent == 7) {
+        arrows[1].removeAttribute('disabled', '')
+        arrows[1].style.cssText = '';
+        arrows[1].querySelector('span').style.cssText = '';
+    }
     if(currentWeek.textContent != "1") {
     fetch(`/calendar?matchday=${Number(currentWeek.textContent) - 1}`)
     .then(response => response.json())
@@ -14,10 +33,24 @@ arrows[0].addEventListener('click', () => {
             teamTwoElements[i].textContent = data[i].team_two;
         }
         currentWeek.textContent--
+        if (currentWeek.textContent === "1") {
+            arrows[0].setAttribute('disabled', '')
+            arrows[0].style.cssText = 'background-color: #F4F5F6;'
+            arrows[0].querySelector('span').style.cssText = 'color: #B7B8B9;'
+        }
+        
     })
+    
 }})
 
 arrows[1].addEventListener('click', () => {
+
+    if (currentWeek.textContent == 1) {
+        arrows[0].removeAttribute('disabled', '');
+        arrows[0].style.cssText = '';
+        arrows[0].querySelector('span').style.cssText = '';
+    }
+
     if(currentWeek.textContent != "7") {
     fetch(`/calendar?matchday=${Number(currentWeek.textContent) +1}`)
     .then(response => response.json())
@@ -27,6 +60,12 @@ arrows[1].addEventListener('click', () => {
             teamTwoElements[i].textContent = data[i].team_two;
         }
         currentWeek.textContent++
+        if (currentWeek.textContent == 7) {
+            arrows[1].setAttribute('disabled', '')
+            arrows[1].style.cssText = 'background-color: #F4F5F6;'
+            arrows[1].querySelector('span').style.cssText = 'color: #B7B8B9;'
+        }
     })
+    
 }})
     
