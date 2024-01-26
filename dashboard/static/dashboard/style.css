@@ -173,6 +173,13 @@ button:active {
     justify-content: space-between;
     padding: 4px 16px;
     align-items: center;
+}
+
+.game div:first-child {
+    text-align: right;
+}
+
+.game div:first-child {
     text-align: right;
 }
 
