@@ -90,10 +90,10 @@ if 'DATABASE_URL' in os.environ:
     DATABASES = { 
     'default': { 
         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'dcsbstrg5bn1k6', 
-        'USER': 'yfvfdobmrsryrz', 
-        'PASSWORD': '88094fda63ced5eb1bc51aed33cd9f291c42dd7570e6223ab80431e8a06f60a0', 
-        'HOST': 'ec2-34-250-252-161.eu-west-1.compute.amazonaws.com', 
+        'NAME': os.getenv('DB_NAME'), 
+        'USER': os.getenv('DB_USER'), 
+        'PASSWORD': os.getenv('DB_PASSWORD'), 
+        'HOST': os.getenv('DB_HOST'), 
         'PORT': '5432', 
     } 
 } 
