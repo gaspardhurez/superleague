@@ -88,9 +88,9 @@ if 'DATABASE_URL' in os.environ:
     'default': { 
         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
         'NAME': 'dcsbstrg5bn1k6', 
-        'USER': '<yfvfdobmrsryrz>', 
-        'PASSWORD': '<88094fda63ced5eb1bc51aed33cd9f291c42dd7570e6223ab80431e8a06f60a0>', 
-        'HOST': '<ec2-34-250-252-161.eu-west-1.compute.amazonaws.com>', 
+        'USER': 'yfvfdobmrsryrz', 
+        'PASSWORD': '88094fda63ced5eb1bc51aed33cd9f291c42dd7570e6223ab80431e8a06f60a0', 
+        'HOST': 'ec2-34-250-252-161.eu-west-1.compute.amazonaws.com', 
         'PORT': '5432', 
     } 
 } 
