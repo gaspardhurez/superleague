@@ -135,7 +135,6 @@ class Game(models.Model):
             })
         
         calendar = sorted(calendar, key=lambda game: game['matchday'])
-        random.shuffle(calendar)
         return calendar
 
             
