@@ -81,17 +81,13 @@ WSGI_APPLICATION = 'superleague.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 import os
+import dj_database_url
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'dcsbstrg5bn1k6',
-            'USER': 'yfvfdobmrsryrz',
-            'PASSWORD': '88094fda63ced5eb1bc51aed33cd9f291c42dd7570e6223ab80431e8a06f60a0',
-            'HOST': 'ec2-34-250-252-161.eu-west-1.compute.amazonaws.com',
-            'PORT': '5432',
-        }
+        'default': 
+            dj_database_url.config(default='postgres://yfvfdobmrsryrz:88094fda63ced5eb1bc51aed33cd9f291c42dd7570e6223ab80431e8a06f60a0@ec2-34-250-252-161.eu-west-1.compute.amazonaws.com:5432/dcsbstrg5bn1k6')
+
     }
 else:
     DATABASES = {
@@ -101,7 +97,6 @@ else:
         }
     }
 
-    'f'
 
 
 # Password validation
