@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.DashboardView.as_view(), name='dashboard'),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
+    path('reglement/', views.RulesView.as_view(), name='rules'),
+    path('contact/', views.RulesView.as_view(), name='contact'),
 ]

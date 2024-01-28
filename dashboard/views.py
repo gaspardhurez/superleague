@@ -50,9 +50,16 @@ class DashboardView(View):
     
 class CalendarView(View):
     def get(self, request):
-
         matchday = request.GET.get('matchday', utils.get_current_matchday())
         data = models.Game.get_matchday_fixtures(matchday)
         return JsonResponse(data, safe=False)
+    
+class RulesView(View):
+    def get(self, request):
+        return render(request, 'rules.html')
+
+class ContactView(View):
+    def get(self, request):
+        return render(request, 'contact.html')
 
 

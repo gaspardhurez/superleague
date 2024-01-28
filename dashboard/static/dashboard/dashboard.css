@@ -1,0 +1,227 @@
+
+
+/* --- --- --- --- --- CONTENT --- --- --- --- --- --- */
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 4% 8%;
+    background-color: var(--grey-1);
+}
+
+    .calendar, 
+    .playerRank, 
+    .teamRank, 
+    .logo {
+        width: 48%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column; 
+        border-radius: 12px;
+        box-shadow: var(--box-shadow-1);
+    }
+
+        .title {
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            padding-left: 20px;
+            background-color: var(--red-1);
+        }
+
+            .title h1 {
+                font-size: 1.4em;
+                font-weight: 500;
+                color: white;
+            }
+
+    .logo {
+        grid-row: 1 / 2;
+        background-color: rgba(255, 85, 86, 1);
+        justify-content: center;
+        align-items: center;
+    }
+
+        .logo img {
+            height: 250px;
+            width: 250px;
+        }
+
+    .calendar {
+        justify-content: space-between;
+    }
+
+        .weekNav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            padding: 32px 16px;
+        }
+
+            .calendarArrow {
+                display: flex;
+                align-items: center;
+                padding: 4px;
+                box-shadow: var(--box-shadow-2);
+                border-radius: 5px;
+            }
+
+            .calendarArrow:active {
+                transform: scale(0.8);
+                box-shadow: var(--box-shadow-2);
+            }
+
+                .calendarArrow .material-symbols-outlined {
+                    font-size: 2rem;
+                }
+
+            .currentWeek {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+                .currentWeek h2 {
+                    font-weight: 500;
+                    font-size: 1.2em;
+                }
+
+        .games {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            padding-bottom: 40px;
+        }
+
+
+            .game {
+                display: flex;
+                width: 85%;
+                padding: 16px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                border-radius: 5px;
+                font-size: 0.95rem;
+                background-color: var(--red-2);
+                
+            }
+
+            .game:hover {
+                background-color: #e9ecef;
+            }
+
+                .game > div {      
+                    display: flex;
+                    align-items: center;
+                    
+                }
+
+                .teamOne, .teamTwo {
+                    justify-content: space-between;
+                    gap: 16px;
+                    flex: 2;
+                }
+
+                .teamOne {
+                    text-align: right;
+                }
+
+                .gameScore {
+                    justify-content: center;
+                    flex: 1;
+                }
+
+                .teamTwo {
+                    text-align: left;
+                }
+
+
+    table {
+        flex: 1;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        tr:nth-child(even) {
+            background-color: var(--red-2);
+        }
+
+        th, 
+        td {
+            text-align: center;
+            border: 0.5px solid #ddd;
+        }
+
+        td {
+            padding: 4px;
+        }
+z
+        th {
+            padding: 8px 4px;
+        }
+
+        td:first-child {
+            width: 7.5%;
+            font-weight: 600;
+        }
+
+
+@media (max-width: 1100px) {
+
+    .content {
+        padding: 8%;
+    }
+
+        .calendar, .playerRank, .teamRank, .logo {
+            width: 90vw;
+        }
+
+            .title h1 {
+                font-size: 1.3em;
+            }
+
+            .logo img {
+                height: 175px;
+                width: 175px;
+            }
+
+            .calendarArrow .material-symbols-outlined {
+                color: black;
+            }
+
+            .currentWeek h2 {
+                font-size: 1em;
+            }
+
+            .game, 
+            table {
+                font-size: 0.7em;
+            }
+
+            td:nth-child(1) {
+                width: 3%;
+            }
+
+            .teamRank td:nth-child(2) {
+                width: 50%;
+            }
+
+            .playerRank td:nth-child(3){
+                width: 20%;
+                text-align: center;
+            }
+
+            .playerRank td:nth-child(2), 
+            .playerRank td:nth-child(5) {
+                width: 20%;
+            }
+
+            .playerRank td:nth-child(4), 
+            .playerRank th:nth-child(4)  {
+                width: 10%;
+            }
+
+}

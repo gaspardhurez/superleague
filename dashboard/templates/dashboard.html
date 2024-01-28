@@ -1,207 +1,190 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script src="{% static 'dashboard/script.js' %}" defer></script>
-    <title>Superleague</title>
-</head>
-<body>
 
-  <div class="container">
-    <div class="navbar">
-      <div class="pageTitle">
-        <h2>Superleague</h2>
-        <a class="instagram" target="_blank" href="https://www.instagram.com/la.superleague/">
-          <img src="{% static 'dashboard/instagram.svg' %}" alt="">
-        </a>
-      
-      </div>
-      
-      <div class="navButtons">
-        <button class="navButton" style="color: white; font-weight: bold; border-bottom: 5px solid white;
-        border-radius: 5px;">Saison</button>
-        <button class="navButton">Réglement</button>
-        <button class="navButton">Contact</button></div>
-    </div>
-    <div class="content">
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+{% endblock %}
 
-      <div class="logo"><img src="{% static 'dashboard/superlogo.png' %}" alt=""></div>
+{% block script %}
+<script src="{% static 'dashboard/script.js' %}" defer></script>
+{% endblock %}
 
-      <div class="calendar">
-        <div class="title"><h1>📅 Calendrier</h1></div>
+{% block title %}
+<title>Superleague</title>
+{% endblock %}
 
-        <div class="calendarBlock">
-          <div class="weekNav">
-            <button class="calendarArrow">
-              <span class="material-symbols-outlined">chevron_left</span>
-          </button>
-            <div>
-              <h2>Semaine</h2>
-              <h2>1</h2>
-            </div>
-            <button class="calendarArrow">
-              <span class="material-symbols-outlined">chevron_right</span>
-          </button>
-            
-          </div>
-          {% for game in games %}
-          <div class="game">
-            <div>
-              <span class="material-symbols-outlined">sports_soccer</span>
-              <p class="teamOne">{{ game.team_one }}</p>
-            </div>
-            <div>
-              <p>-</p>
-            </div>
-            <div>
-              <p class="teamTwo">{{ game.team_two }}</p>
-              <span class="material-symbols-outlined">sports_soccer</span>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        
-
-      </div>
-
-      <div class="teamRank">
-        <div class="title"><h1>🏆 Classement</h1></div>
-        <div class="table">
-          <table>
-
-            <thead>
-              <tr>
-                <th></th>
-                <th>Equipe</th>
-                <th>GP</th>
-                <th>W</th>
-                <th>D</th>
-                <th>L</th>
-                <th>GD</th>
-                <th>REF</th>
-                <th>PTS</th>
-              </tr>
-            </thead>
-    
-            <tbody>
-              {% for team in rankings %}
-              <tr>
-                  <td>{{ forloop.counter }}</td>
-                  <td>{{ team.team }}</td>
-                  <td>{{ team.games_played }}</td>
-                  <td>{{ team.wins }}</td>
-                  <td>{{ team.draws }}</td>
-                  <td>{{ team.losses }}</td>
-                  <td>{{ team.goal_difference }}</td>
-                  <td>{{ team.refereed_games }}</td>
-                  <td>{{ team.points }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div> 
-      
-    </div>
-      <div class="playerRank">
-        <div class="title"><h1>⚽️ Buteurs</h1></div>
-        <div class="table">
-
-          <table>
-
-            <thead>
-              <th></th>
-              <th>Joueur</th>
-              <th>Equipe</th>
-              <th>Buts</th>
-              <th>Forme</th>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Tanguy Waterlot</td>
-                <td>Boucherie Française</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eden Hazard</td>
-                <td>LOSC Lille</td>
-                <td>20</td>
-                <td>⚽️⚽️⚽️</td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
+{% block content %}
+<div class="content">
   
+
+  <div class="logo"><img src="{% static 'dashboard/superlogo.png' %}" alt=""></div>
+
+  <div class="calendar">
+    <div class="title"><h1>📅 Calendrier</h1></div>
+
+    <div class="weekNav">
+      <button class="calendarArrow">
+        <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+      <div class="currentWeek">
+        <h2>Semaine</h2>
+        <h2>1</h2>
       </div>
+      <button class="calendarArrow">
+        <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+      
     </div>
+
+    <div class="games">
+      {% for game in games %}
+      <div class="game">
+        <div class="teamOne">
+          <span class="material-symbols-outlined">sports_soccer</span>
+          <p >{{ game.team_one }}</p>
+        </div>
+        <div class="gameScore">
+          <p>-</p>
+        </div>
+        <div class="teamTwo">
+          <p>{{ game.team_two }}</p>
+          <span class="material-symbols-outlined">sports_soccer</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      
+    
+
   </div>
 
+  <div class="teamRank">
+    <div class="title"><h1>🏆 Classement</h1></div>
+      <table>
+
+        <thead>
+          <tr>
+            <th></th>
+            <th>Equipe</th>
+            <th>GP</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>GD</th>
+            <th>REF</th>
+            <th>PTS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for team in rankings %}
+          <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ team.team }}</td>
+              <td>{{ team.games_played }}</td>
+              <td>{{ team.wins }}</td>
+              <td>{{ team.draws }}</td>
+              <td>{{ team.losses }}</td>
+              <td>{{ team.goal_difference }}</td>
+              <td>{{ team.refereed_games }}</td>
+              <td>{{ team.points }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   
-    
-</body>
-</html>
+</div>
+  <div class="playerRank">
+    <div class="title"><h1>⚽️ Buteurs</h1></div>
+    <div class="table">
+
+      <table>
+
+        <thead>
+          <th></th>
+          <th>Joueur</th>
+          <th>Equipe</th>
+          <th>Buts</th>
+          <th>Forme</th>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Tanguy Waterlot</td>
+            <td>Boucherie Française</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eden Hazard</td>
+            <td>LOSC Lille</td>
+            <td>20</td>
+            <td>⚽️⚽️⚽️</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

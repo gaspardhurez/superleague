@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'dashboard/main.css' %}">
+    {% block stylesheet %}{% endblock %}
+    {% block script %}{% endblock %}
+    {% block title %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="pageTitle">
+              <a href="/"><h2>Superleague</h2></a>
+              <a class="instagram" target="_blank" href="https://www.instagram.com/la.superleague/">
+            <img src="{% static 'dashboard/instagram.svg' %}" alt="">
+              </a> 
+            </div>
+            
+            <div class="navButtons">
+              <a href="/"><button class="navButton {% if request.path == '/' %}active{% endif %}">Saison</button></a>
+              <a href="/reglement/"><button class="navButton {% if request.path == '/reglement/' %}active{% endif %}">Réglement</button></a>
+              <a href="/contact/"><button class="navButton {% if request.path == '/contact/' %}active{% endif %}">Contact</button></a>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 let arrows = document.querySelectorAll(".calendarArrow")
 let currentWeek = document.querySelector(".weekNav > div > h2:nth-child(2)")
-let teamOneElements = document.querySelectorAll('.teamOne');
-let teamTwoElements = document.querySelectorAll('.teamTwo');
+let teamOneElements = document.querySelectorAll('.teamOne p');
+let teamTwoElements = document.querySelectorAll('.teamTwo p');
 
 if (currentWeek.textContent === "1") {
     arrows[0].setAttribute('disabled', '')
