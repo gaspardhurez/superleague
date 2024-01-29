@@ -37,10 +37,9 @@ class DashboardView(View):
         # Query calendar
 
         current_matchday = utils.get_current_matchday()
+        print(current_matchday)
         games = models.Game.get_matchday_fixtures(current_matchday)
         
-        print(json.dumps(games, indent=4))
-
 
         return render(request, 'dashboard.html', 
                       {

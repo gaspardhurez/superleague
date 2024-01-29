@@ -9,6 +9,9 @@ class Season(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
 
+    def __str__(self) -> str:
+        return "Season" + str(self.number)
+
 class Team(models.Model):
     name = models.CharField(max_length=30)
     seasons = models.ManyToManyField(Season)
@@ -105,7 +108,7 @@ class Game(models.Model):
     away_goals = models.IntegerField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return str(self.team_one) + " - " + str(self.team_two)
+        return f"Matchday {str(self.matchday)} - {str(self.team_one)} vs {str(self.team_two)}"
     
     def get_calendar():
         calendar = []

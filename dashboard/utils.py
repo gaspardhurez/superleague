@@ -68,6 +68,9 @@ def get_current_matchday():
     current_week = datetime.datetime.now().isocalendar()[1]
     first_week = season.start_date.isocalendar()[1]
 
+    print(current_week)
+    print(first_week)
+
     current_matchday = current_week - first_week + 1
     if current_matchday < 1:
         current_matchday = 1
