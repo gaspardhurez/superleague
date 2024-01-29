@@ -16,25 +16,24 @@
 
 {% block content %}
 <div class="content">
-  
 
   <div class="logo"><img src="{% static 'dashboard/superlogo.png' %}" alt=""></div>
 
   <div class="calendar">
+
     <div class="title"><h1>📅 Calendrier</h1></div>
 
     <div class="weekNav">
       <button class="calendarArrow">
         <span class="material-symbols-outlined">chevron_left</span>
-    </button>
+      </button>
       <div class="currentWeek">
         <h2>Semaine</h2>
         <h2>1</h2>
       </div>
       <button class="calendarArrow">
         <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-      
+      </button>
     </div>
 
     <div class="games">
@@ -55,8 +54,6 @@
       {% endfor %}
     </div>
       
-    
-
   </div>
 
   <div class="teamRank">
@@ -94,7 +91,8 @@
         </tbody>
       </table>
   
-</div>
+  </div>
+
   <div class="playerRank">
     <div class="title"><h1>⚽️ Buteurs</h1></div>
     <div class="table">
@@ -186,5 +184,6 @@
     </div>
 
   </div>
+
 </div>
 {% endblock %}

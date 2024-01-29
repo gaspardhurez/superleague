@@ -104,7 +104,10 @@ else:
         }
     }
 
-SECURE_SSL_REDIRECT = True
+if  'DEV_ENV' in os.environ:
+    SECURE_SSL_REDIRECT = False
+else:
+    SECURE_SSL_REDIRECT = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

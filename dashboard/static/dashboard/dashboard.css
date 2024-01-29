@@ -37,7 +37,6 @@
             }
 
     .logo {
-        grid-row: 1 / 2;
         background-color: rgba(255, 85, 86, 1);
         justify-content: center;
         align-items: center;

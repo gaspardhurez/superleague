@@ -1,5 +1,140 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block stylesheet %}
+<link rel="stylesheet" href="{% static 'dashboard/rules.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Superleague - Réglement</title>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+
+    <div class="tournament-rules">
+
+        <div class="title"><h1>👨‍⚖️ Réglement du tournoi</h1></div>
+
+        <div class="rules-content">
+            <h3>7 semaines de poule</h3>
+            <ul>
+                <li>Une poule unique réunissant les 7 équipes</li>
+                <li>Chaque équipe s'affronte 1 fois</li>
+                <li>Début de la phase de poules le lundi 29 janvier</li>
+                <li>Fin de la phase de poules le dimanche 17 mars</li>
+            </ul>
+        </div>
+
+        <div class="rules-content">
+            <h3>Un tournoi de phases finales</h3>
+            <ul>
+                <li>Un tournoi entre toutes les équipes</li>
+                <li>Quarts de finale jusqu'à la finale, et matchs de classement</li>
+                <li>Tournoi final un samedi d'avril</li>
+            </ul>
+        </div>
+
+        <div class="rules-content">
+            <h3>Organisation des matchs</h3>
+            <ul>
+                <li>Les capitaines d'équipe sont tenus de planifier entre eux et jouer leur match chaque semaine</li>
+                <li>Les matchs peuvent avoir lieu n'importe où, n'importe quand dans la semaine</li>
+                <li>Si le match n'est pas joué dans la semaine, les équipes prennent 0 points (sauf cas spécial)</li>
+            </ul>
+        </div>
+
+        <div class="rules-content">
+            <h3>Résultats</h3>
+            <ul>
+                <li>Une victoire donne 3 points, un match nul 1 point, une défaite 0 point</li>
+                <li>En cas d'égalité, le tie-break considère:
+                    <ul>
+                        <li>Le nombre de matchs arbitrés par l'équipe</li>
+                        <li>Le goal-average</li>
+                        <li>Le goal-average particulier</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="game-rules">
+
+        <div class="title"><h1>👨‍⚖️ Format des matchs</h1></div>
+
+        <div class="rules-content">
+            <h3>Joueurs</h3>
+            <ul>
+                <li>Un match se joue à 5 contre 5</li>
+                <li>2 remplaçants par équipe sont autorisés par match</li>
+                <li>Les remplacements en match sont illimités</li>
+                <li>Les remplacements ou changements de poste n'arrêtent pas le jeu</li>
+                <li>Les équipes sont tenues de noter le score et le nom des buteurs au fil du match</li>
+            </ul>
+        </div>
+
+        <div class="rules-content">
+            <h3>Durée</h3>
+            <ul>
+                <li>Les matchs se disputent sur deux mi-temps de 25 minutes avec mi-temps de 5 mn</li>
+                <li>Si un joueur est en retard, son équipe encaisse 2 buts de handicap par tranche de 5 minutes de retard</li>
+                <li>Passé 15 minutes de retard le match est perdu par forfait 6-0</li>
+            </ul>
+        </div>
+
+        <div class="rules-content">
+            <h3>Arbitrage</h3>
+            <ul>
+                <li>Les matchs sont arbitrés soit par un joueur d'une autre équipe, soit par auto-arbitrage</li>
+                <li>Le nombre de matchs arbitrés peut déterminer le classement d'une équipe en fin de saison</li>
+                <li>L'arbitre se réserve le droit de donner des fautes d'antijeu en cas d'abus du réglement</li>
+                <li>La compétition est régie par les principes du fair-play, du respect et de l'auto-arbitrage</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="ingame-rules">
+
+        <div class="title"><h1>👨‍⚖️ Règles en match</h1></div>
+
+        <div class="rules-content">
+            <h3>Fautes</h3>
+            <ul>
+                <li>Le jeu au sol et les tacles glissés sont sanctionnés d'une faute, tout comme les contacts trop appuyés (obstructions/poussées), et les mains</li>
+                <li>L'équipe qui subit la faute relance le jeu dans sa moitié</li>
+                <li>Au bout de 5 fautes, l'équipe adverse reçoit un penalty</li>
+            </ul>
+        </div>
+    
+        <div class="rules-content">
+            <h3>Zone de jeu</h3>
+            <ul>
+                <li>Les filets supérieurs et latéraux rendent le ballon à l'équipe adverse</li>
+                <li>Les filets arrières rendent le ballon au gardien</li>
+                <li>Si un joueur est bloqué dans le coin du terrain, il peut lever la main et repartir du milieu ou de son gardien</li>
+                <li>La ligne de surface agit comme la ligne de but : le ballon est considéré à l'intérieur uniquement si il a totalement franchi la ligne</li>
+            </ul>
+        </div>
+    
+        <div class="rules-content">
+            <h3>Surface et gardien</h3>
+            <ul>
+                <li>Seul les gardiens peuvent se déplacer dans la surface</li>
+                <li>Si un défenseur rentre dans sa surface = Faute pour l'équipe adverse</li>
+                <li>Si un attaquant rentre dans la surface advere = Balle rendue à l'équipe qui défend</li>
+                <li>Les gardiens ne peuvent pas sortir de la surface</li>
+            </ul>
+        </div>
+
+    </div>
+
+    
+
+    
+    
+</div>
 {% endblock %}
