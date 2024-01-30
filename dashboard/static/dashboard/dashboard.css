@@ -99,6 +99,7 @@
 
             .game {
                 display: flex;
+                gap: 4px;
                 width: 85%;
                 padding: 16px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.2);
@@ -114,8 +115,7 @@
 
                 .game > div {      
                     display: flex;
-                    align-items: center;
-                    
+                    align-items: center;  
                 }
 
                 .teamOne, .teamTwo {
@@ -131,6 +131,9 @@
                 .gameScore {
                     justify-content: center;
                     flex: 1;
+                    font-size: 1.15rem;
+                    font-weight: 400;
+                    letter-spacing: 1px;
                 }
 
                 .teamTwo {
@@ -166,6 +169,10 @@ z
             width: 7.5%;
             font-weight: 600;
         }
+
+    .playerRank tbody {
+        color: transparent;
+    }
 
 
 @media (max-width: 1100px) {

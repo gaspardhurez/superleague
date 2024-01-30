@@ -14,7 +14,7 @@ class Season(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=30)
-    seasons = models.ManyToManyField(Season, on_delete=models.DO_NOTHING)
+    seasons = models.ManyToManyField(Season)
 
     def __str__(self) -> str:
         return self.name
