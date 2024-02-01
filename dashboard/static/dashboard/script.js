@@ -65,8 +65,7 @@ fetchWeekGames(currentWeek.textContent);
 let lastGameGoals = document.querySelectorAll('.playerRank td:last-child')
 
 lastGameGoals.forEach( (goalDisplay) => {
-    goalAmount = Number(goalAmount.textContent)
-
+    goalAmount = Number(goalDisplay.textContent)
     if (goalAmount> 3) {goalDisplay.textContent = `⚽️ x${goalAmount}`}
     else if (goalAmount == 0) {goalDisplay.textContent = '❌'}
     else {goalDisplay.textContent = '⚽️'.repeat(goalAmount)}
