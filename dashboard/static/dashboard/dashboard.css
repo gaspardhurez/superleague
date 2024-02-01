@@ -201,6 +201,9 @@ z
             table {
                 font-size: 0.7em;
             }
+            .gameScore {
+                font-size: 0.8rem;
+            }
 
             td:nth-child(1) {
                 width: 3%;
