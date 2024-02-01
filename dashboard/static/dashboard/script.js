@@ -62,6 +62,17 @@ function changeButtonState() {
 changeButtonState();
 fetchWeekGames(currentWeek.textContent);
 
+let lastGameGoals = document.querySelectorAll('.playerRank td:last-child')
+
+lastGameGoals.forEach( (goalAmount) => {
+    if (Number(goalAmount.textContent) > 3) {
+        goalAmount.textContent = `⚽️ x${goalAmount.textContent}`
+    }
+    else {
+        goalAmount.textContent = '⚽️'.repeat(Number(goalAmount.textContent))
+    }
+})
+
 
 // EVENT HANDLING
 
