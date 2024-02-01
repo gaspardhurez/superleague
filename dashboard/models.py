@@ -91,6 +91,9 @@ class Player(models.Model):
             if existing_captain.exists():
                 raise ValidationError("This team already has a captain.")
         super().save(*args, **kwargs)
+    
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.last_name}"
 
 
 class Game(models.Model):
@@ -147,21 +150,5 @@ class Goal(models.Model):
     game = models.ForeignKey(Game, on_delete=models.DO_NOTHING)
     player = models.ForeignKey(Player, on_delete=models.DO_NOTHING, null=True, blank=True)
 
-class TeamRank(models.Model):
-    matchday = models.IntegerField()
-    team = models.ForeignKey(Team, on_delete=models.DO_NOTHING)
-    refereed_games = models.IntegerField()
-    wins = models.IntegerField()
-    draws = models.IntegerField()
-    losses = models.IntegerField()
-    points = models.IntegerField()
-    goals_scored = models.IntegerField()
-    goals_conceded = models.IntegerField()
-
     def __str__(self) -> str:
-        return str(self.team)
-
-class PlayerRank(models.Model):
-    matchday = models.IntegerField()
-    player = models.ForeignKey(Player, on_delete=models.DO_NOTHING)
-    goals = models.IntegerField()
+        return f"Matchday {str(self.game.matchday)} - {str(self.player.first_name + ' ' + self.player.last_name)}"

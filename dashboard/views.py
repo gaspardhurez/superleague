@@ -15,7 +15,32 @@ class DashboardView(View):
     def get(self, request):
 
         # Query goals ranking
-        goals_ranking = models.Player.objects.annotate(num_goals=Count('goal'))
+        players_ranking = models.Player.objects.annotate(num_goals=Count('goal')).order_by('-num_goals')
+        if len(players_ranking) > 10:
+            players_ranking = players_ranking[:10]
+
+        goals_ranking = []
+
+        for player in players_ranking:
+            team_name = player.team.name
+            player_stats = {}
+            player_stats['name'] = player.first_name + ' ' + player.last_name
+            player_stats['team'] = team_name
+            player_stats['goals'] = player.num_goals
+
+            goals = models.Goal.objects.filter(player=player)
+            games_played = models.Game.objects.filter(Q(team_one__name=team_name) | Q(team_two__name=team_name)).filter(home_goals__isnull=False)
+            last_game_played = games_played.order_by("-matchday")[0]
+
+            all_game_goals = last_game_played.goal_set.all()
+            player_goals = 0
+            for goal in all_game_goals:
+                if goal.player == player:
+                    player_goals += 1
+            
+            player_stats['last_game'] = player_goals
+            goals_ranking.append(player_stats)
+
 
         # Query teams ranking
         teams_ranking = []
@@ -37,7 +62,6 @@ class DashboardView(View):
         # Query calendar
 
         current_matchday = utils.get_current_matchday()
-        print(current_matchday)
         games = models.Game.get_matchday_fixtures(current_matchday)
         
 
@@ -45,6 +69,7 @@ class DashboardView(View):
                       {
                           "games": games,
                           "rankings" : teams_ranking,
+                          "goals_ranking" : goals_ranking,
                       })
     
 class CalendarView(View):

@@ -108,76 +108,16 @@
         </thead>
 
         <tbody>
+
+          {% for goalscorer in goals_ranking %}
           <tr>
-            <td>1</td>
-            <td>Tanguy Waterlot</td>
-            <td>Boucherie Française</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ goalscorer.name }}</td>
+            <td>{{ goalscorer.team }}</td>
+            <td>{{ goalscorer.goals }}</td>
+            <td>{{ goalscorer.last_game }}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Eden Hazard</td>
-            <td>LOSC Lille</td>
-            <td>20</td>
-            <td>⚽️⚽️⚽️</td>
-          </tr>
+          {% endfor %}
 
         </tbody>
       </table>

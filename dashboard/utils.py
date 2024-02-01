@@ -68,11 +68,49 @@ def get_current_matchday():
     current_week = datetime.datetime.now().isocalendar()[1]
     first_week = season.start_date.isocalendar()[1]
 
-    print(current_week)
-    print(first_week)
-
     current_matchday = current_week - first_week + 1
     if current_matchday < 1:
         current_matchday = 1
     return current_matchday
+
+def add_player():
+    teams = models.Team.objects.all()
+    for i, team in enumerate(teams):
+        print(i, team)
+
+    team_i = int(input("Index of the team: "))
+    first_name, last_name = input("Name of the player: ").split(" ")
+
+    models.Player.objects.create(first_name=first_name, last_name=last_name, team=teams[team_i], captain=False)
+
+
+def add_goalscorer():
+    games = models.Game.objects.filter(matchday=get_current_matchday())
+    for i, game in enumerate(games):
+        print(i, game)
+    game_i = int(input("What game? "))
+    game = games[game_i]
+
+    teams = [game.team_one, game.team_two]
+    for i, team in enumerate(teams):
+        print(i, team)
+    team_i = int(input(f"What team? "))
+    team = teams[team_i]
+
+    players = models.Player.objects.filter(team=team)
+    if players:
+        for i, player in enumerate(players):
+            print(i, player)
+    
+    player = input(f"What player? ")
+    if player.isdigit():
+        player = players[int(player)]
+    else:
+        first_name, last_name = player.split(" ")
+        player = models.Player.objects.create(first_name=first_name, last_name=last_name, team=team, captain=False)
+
+
+    goals_number = int(input("How many goals? "))
+    for i in range(goals_number):
+        models.Goal.objects.create(game=game, player=player)
     

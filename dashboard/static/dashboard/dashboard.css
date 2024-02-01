@@ -170,11 +170,6 @@ z
             font-weight: 600;
         }
 
-    .playerRank tbody {
-        color: transparent;
-    }
-
-
 @media (max-width: 1100px) {
 
     .content {
