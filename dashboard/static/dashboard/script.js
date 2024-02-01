@@ -22,7 +22,7 @@ function fetchWeekGames(matchday) {
             console.log(data)
 
             if (data[i].home_goals && data[i].away_goals) {
-                const score = data[i].home_goals + " - " + data[i].away_goals
+                const score = data[i].home_goals + " : " + data[i].away_goals
                 scoreElements[i].textContent = score;
             }
         }
