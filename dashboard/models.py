@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 import random
+from . import utils
 
 class Season(models.Model):
     number = models.IntegerField()
@@ -129,8 +130,11 @@ class Game(models.Model):
         return calendar
     
     def get_matchday_fixtures(matchday):
+        if matchday == "current":
+            matchday == utils.get_current_matchday()
+        
         calendar = []
-        games = Game.objects.exclude(Q(team_one__name="off") | Q(team_two__name="off")).filter(matchday=matchday)
+        games = Game.objects.filter(matchday=matchday)
         for game in games:
             calendar.append({
                 "matchday" : game.matchday,

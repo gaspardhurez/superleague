@@ -2,14 +2,16 @@ const MAX_WEEK = 5
 const MIN_WEEK = 1
 
 let arrows = document.querySelectorAll(".calendarArrow")
-let currentWeek = document.querySelector(".weekNav > div > h2:nth-child(2)")
+let currentWeek = document.querySelector(".currentWeek > h2:nth-child(2)")
 let teamOneElements = document.querySelectorAll('.teamOne p');
 let teamTwoElements = document.querySelectorAll('.teamTwo p');
 const scoreElements = document.querySelectorAll('.gameScore p')
 
 function fetchWeekGames(matchday) {
 
-    fetch(`/calendar?matchday=${Number(matchday)}`)
+    const response = matchday ? fetch(`/calendar?matchday=${Number(matchday)}`) : fetch(`/calendar`);
+   
+    response
     .then(response => response.json())
     .then(data => {
         for (let i = 0; i < data.length; i++) {
@@ -19,13 +21,13 @@ function fetchWeekGames(matchday) {
             teamOneElements[i].textContent = data[i].team_one;
             teamTwoElements[i].textContent = data[i].team_two;
 
-            console.log(data)
-
             if (data[i].home_goals && data[i].away_goals) {
                 const score = data[i].home_goals + " : " + data[i].away_goals
                 scoreElements[i].textContent = score;
             }
         }
+
+        if (!matchday) currentWeek.textContent = data[0].matchday.toString();
     }) 
 }
 
@@ -75,7 +77,7 @@ lastGameGoals.forEach( (goalDisplay) => {
 // EVENT HANDLING
 
 arrows[0].addEventListener('click', () => {
-
+   
     currentWeek.textContent--;
 
     fetchWeekGames(currentWeek.textContent);
@@ -85,7 +87,6 @@ arrows[0].addEventListener('click', () => {
 
 
 arrows[1].addEventListener('click', () => {
-
     currentWeek.textContent++;
 
     fetchWeekGames(currentWeek.textContent);
