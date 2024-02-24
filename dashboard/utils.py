@@ -88,7 +88,9 @@ def add_goalscorer():
 
     while True:
 
-        games = models.Game.objects.filter(matchday=get_current_matchday())
+        matchday = int(input("What matchday? "))
+
+        games = models.Game.objects.filter(matchday=matchday)
         for i, game in enumerate(games):
             print(i, game)
         game_i = int(input("What game? "))
