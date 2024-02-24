@@ -3,6 +3,8 @@ dj-database-url==2.1.0
 Django==5.0.2
 django-cors-headers==4.3.1
 django-jazzmin==2.6.0
+gunicorn==21.2.0
+packaging==23.2
 psycopg==3.1.18
 psycopg2==2.9.9
 python-dotenv==1.0.1
