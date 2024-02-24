@@ -1,0 +1,99 @@
+
+/* --- --- --- --- --- CONTENT --- --- --- --- --- --- */
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 2%;
+    background-color: var(--grey-1);
+}
+
+.tournament-rules,
+.game-rules,
+.ingame-rules {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-1);
+}
+
+    .title {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        padding-left: 20px;
+        background-color: var(--red-1);
+    }
+
+    .title h1 {
+        font-size: 1.4em;
+        font-weight: 500;
+        color: white;
+    }
+
+    .rules-content {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 3% 6%;
+
+    }
+
+    .rules-content h3 {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .rules-content ul {
+        padding-left: 16px;
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
+    .rules-content:nth-child(even) {
+        color: var(--red-1);
+    }
+
+    .rules-content:not(:first-child):nth-child(odd) {
+        color: white;
+        background-color: var(--red-1);
+    }
+
+    .rules-content:nth-child(2){
+        padding-top: 8px;
+    }
+
+    .rules-content:last-child {
+        flex: 1;
+    }
+
+
+@media (max-width: 1100px) {
+
+    .content {
+        padding: 8%;
+    }
+
+        .tournament-rules, .game-rules, .ingame-rules {
+            width: 75vw;
+        }
+}
+
+@media (max-width: 700px) {
+
+    .tournament-rules, .game-rules, .ingame-rules {
+        width: 95vw;
+    }
+
+        .rules-content h3 {
+            font-size: 1.2rem;
+        }
+}
+
+
+
+    
